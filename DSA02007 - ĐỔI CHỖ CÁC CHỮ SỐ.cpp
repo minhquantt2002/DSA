@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+    int t; cin >> t;
+    while (t--) {
+        int k; string s;
+        cin >> k >> s;
+        int n = s.size() - 1, j = 0;
+        while (k--) {
+            int l = 0, r = s.size() - 1, k = r;
+            while (l < r && s[l + 1] <= s[l]) l++;
+            if (l == r) break;
+            while (l < r) {
+                if (s[r] > s[k]) k = r;
+                r--;
+            }
+            l = 0;
+            while (l < k && s[l] >= s[k]) l++;
+            swap(s[l], s[k]);
+        }
+        cout << s << endl;
+    }
+}
